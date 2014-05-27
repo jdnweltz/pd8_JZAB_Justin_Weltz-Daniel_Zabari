@@ -1,0 +1,7 @@
+2014-05-25 (Both)
+Began developing Maze-creating algorithm.  Implemented seperate Dummy paths and Exit Paths.
+Maze is created thorugh set of recursive calls and always has a guaranteed exit.  Wrote transform method, which transforms symbols to whitespace.
+Created 4 cases for 4 different corners.  Caused edges to reflect (change case) which we then determined breaks the code.
+We either get errors or pretty cool mazes.
+
+2014-05-27 (Zabari)
