@@ -67,7 +67,7 @@ public class MazeBuilder{
 	int Switch=((int)(Math.random()*2));
 	double Dummy = Math.random();
 	int moveOver = (int)(Math.random()*3);
-	double percentage = .7
+	double percentage = 1;
 	if (_caseNum== 0){
 	    if (Switch==0){
 		/*
