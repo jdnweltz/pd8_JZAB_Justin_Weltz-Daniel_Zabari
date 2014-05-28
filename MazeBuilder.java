@@ -19,7 +19,7 @@ public class MazeBuilder{
 		_mazeArray[r][c] = ' ';
 	    }
 	}
-	_caseNum=(int)(Math.random()*4);
+	_caseNum=(int)(Math.random()*1);
 	_caseNumFinal=_caseNum;
 	if (_caseNumFinal==0){
 	    makeExitPath(0,0,EXITPATH,0);
@@ -67,7 +67,7 @@ public class MazeBuilder{
 	int Switch=((int)(Math.random()*2));
 	double Dummy = Math.random();
 	int moveOver = (int)(Math.random()*3);
-	double percentage = 1;
+	double percentage = .60;
 	if (_caseNum== 0){
 	    if (Switch==0){
 		/*
@@ -75,8 +75,8 @@ public class MazeBuilder{
 		    _mazeArray[++c][r] = path;
 		*/
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    // rE=r;
+		    //cE=c;
 		    makeExitPath(++r,c,EXITPATH, startCount);
 			makeExitPath(r,--c,DUMMYPATH,startCount);
 		}
@@ -89,8 +89,8 @@ public class MazeBuilder{
 	    
 	    else{
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    //rE=r;
+		    //cE=c;
 		    makeExitPath(r,++c,EXITPATH,startCount);
 		     makeExitPath(--r,c,DUMMYPATH,startCount);
 			
@@ -110,8 +110,8 @@ public class MazeBuilder{
 	    //	    _mazeArray[--c][r] = path;
 	    if (Switch==0){
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    //rE=r;
+		    //cE=c;
 		    makeExitPath(++r,c,EXITPATH,startCount);
 		    makeExitPath(r,++c,DUMMYPATH,startCount);
 		}
@@ -123,8 +123,8 @@ public class MazeBuilder{
 	    }
 	    else{
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    //rE=r;
+		    //cE=c;
 		    makeExitPath(r,--c,EXITPATH,startCount);
 
 			makeExitPath(--r,c,DUMMYPATH,startCount);
@@ -141,8 +141,8 @@ public class MazeBuilder{
 	    //	    _mazeArray[--c][r] = path;
 	    if (Switch==0){
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    //rE=r;
+		    //cE=c;
 		    makeExitPath(--r,c,EXITPATH,startCount);
 
 			makeExitPath(r,++c,DUMMYPATH,startCount);
@@ -156,8 +156,8 @@ public class MazeBuilder{
 	    }
 	    else{
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    //rE=r;
+		    //cE=c;
 		    makeExitPath(r,--c,EXITPATH,startCount);
 
 			makeExitPath(++r,c,DUMMYPATH,startCount);
@@ -174,8 +174,8 @@ public class MazeBuilder{
 	    //	    _mazeArray[++c][r] = path;
 	    if (Switch==0){
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    //rE=r;
+		    //cE=c;
 		    makeExitPath(--r,c,EXITPATH,startCount);
 		    makeExitPath(r,--c,DUMMYPATH,startCount);
 		}
@@ -188,8 +188,8 @@ public class MazeBuilder{
 	    }
 	    else{
 		if (_mazeArray[r][c] == EXITPATH){
-		    rE=r;
-		    cE=c;
+		    //rE=r;
+		    //cE=c;
 		    makeExitPath(r,++c,EXITPATH,startCount);
 
 			makeExitPath(++r,c,DUMMYPATH,startCount);
@@ -254,7 +254,7 @@ public class MazeBuilder{
     public void transform(){
 	for (int r = 0;r<_r;r++){
 	    for (int c=0;c<_c;c++){
-		if ((( r==0 || c==_c-1 || r==_r-1 || c==0) && _mazeArray[r][c] != '#') || _mazeArray[r][c] == ' ')
+		if ((( r==0 || c==_c-1 || r==_r-1 || c==0) && (_mazeArray[r][c]!= EXITPATH)) || _mazeArray[r][c] == ' ')
 		    _mazeArray[r][c]='D';
 		else  
 		    _mazeArray[r][c]=' ';
@@ -262,7 +262,7 @@ public class MazeBuilder{
 	}
     }
     public static void main(String[] args){
-	MazeBuilder JDawG=new MazeBuilder(100,50);
+	MazeBuilder JDawG=new MazeBuilder(50,50);
 	try {
 	    FileWriter f=new FileWriter("maze.txt");
 	    f.write(JDawG.toString());

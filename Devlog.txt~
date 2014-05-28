@@ -7,5 +7,4 @@ We either get errors or pretty cool mazes.
 2014-05-27 (Justin)
 realized that the broken code was the result of a reflection at the very beginning and also changed the transformation if statemnet to accomadate the exit path. 
 
-2014-05-28 (Zabari)
-Set to print only case 1, fixed some missing parens? fixed the column 0 row 0 problem, changed dummy path percentages, still not perfect.  Updated gitignore to ignore backup files and Maze.txt.
+2014-05-27 (Zabari)
