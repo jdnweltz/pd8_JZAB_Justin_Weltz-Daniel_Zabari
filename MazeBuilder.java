@@ -65,8 +65,9 @@ public class MazeBuilder{
 	    return;
 	_mazeArray[r][c]= path;
 	int Switch=((int)(Math.random()*2));
-	int Dummy = (int)(Math.random()*1);
+	double Dummy = Math.random();
 	int moveOver = (int)(Math.random()*3);
+	double percentage = .7
 	if (_caseNum== 0){
 	    if (Switch==0){
 		/*
@@ -77,26 +78,30 @@ public class MazeBuilder{
 		    rE=r;
 		    cE=c;
 		    makeExitPath(++r,c,EXITPATH, startCount);
-		    if (Dummy == 0)
 			makeExitPath(r,--c,DUMMYPATH,startCount);
 		}
 		else {
-		  
+		    if (Dummy < percentage){
 		    makeExitPath(--r,c,DUMMYPATH,startCount);
-		   
+		    }
 		}
 	    }
+	    
 	    else{
 		if (_mazeArray[r][c] == EXITPATH){
 		    rE=r;
 		    cE=c;
 		    makeExitPath(r,++c,EXITPATH,startCount);
-		    if (Dummy == 0)
-			makeExitPath(--r,c,DUMMYPATH,startCount);
+		     makeExitPath(--r,c,DUMMYPATH,startCount);
+			
 		}
 		else{
+	
+		    if (Dummy < percentage){
+			makeExitPath(--r,c,DUMMYPATH,startCount);
+		    }
 		    
-		    makeExitPath(r,--c,DUMMYPATH,startCount);
+
 		}
 	    }
 	}
@@ -108,11 +113,10 @@ public class MazeBuilder{
 		    rE=r;
 		    cE=c;
 		    makeExitPath(++r,c,EXITPATH,startCount);
-		    if (Dummy == 0)
-			makeExitPath(r,++c,DUMMYPATH,startCount);
+		    makeExitPath(r,++c,DUMMYPATH,startCount);
 		}
 		else {
-		   
+		   if (Dummy < percentage)	
 		    makeExitPath(--r,c,DUMMYPATH,startCount);
 		   
 		}
@@ -122,11 +126,11 @@ public class MazeBuilder{
 		    rE=r;
 		    cE=c;
 		    makeExitPath(r,--c,EXITPATH,startCount);
-		    if (Dummy == 0)
+
 			makeExitPath(--r,c,DUMMYPATH,startCount);
 		}
 		else{
-		    
+		    if (Dummy < percentage)
 		    makeExitPath(r,++c,DUMMYPATH,startCount);
 		   
 		}
@@ -140,11 +144,12 @@ public class MazeBuilder{
 		    rE=r;
 		    cE=c;
 		    makeExitPath(--r,c,EXITPATH,startCount);
-		    if (Dummy == 0)
+
 			makeExitPath(r,++c,DUMMYPATH,startCount);
 		}
 		else {
-		     makeExitPath(++r,c,DUMMYPATH,startCount);
+		    if (Dummy < percentage)	 
+			makeExitPath(++r,c,DUMMYPATH,startCount);
 		    
 		   
 		}
@@ -154,11 +159,11 @@ public class MazeBuilder{
 		    rE=r;
 		    cE=c;
 		    makeExitPath(r,--c,EXITPATH,startCount);
-		    if (Dummy == 0)
+
 			makeExitPath(++r,c,DUMMYPATH,startCount);
 		}
 		else{
-		    
+		    if (Dummy < percentage)
 		    makeExitPath(r,++c,DUMMYPATH,startCount);
 		    
 		}
@@ -172,10 +177,10 @@ public class MazeBuilder{
 		    rE=r;
 		    cE=c;
 		    makeExitPath(--r,c,EXITPATH,startCount);
-		    if (Dummy == 0)
-			makeExitPath(r,--c,DUMMYPATH,startCount);
+		    makeExitPath(r,--c,DUMMYPATH,startCount);
 		}
 		else {
+		    if (Dummy < percentage)
 		    makeExitPath(++r,c,DUMMYPATH,startCount);
 		   
 		   
@@ -186,12 +191,12 @@ public class MazeBuilder{
 		    rE=r;
 		    cE=c;
 		    makeExitPath(r,++c,EXITPATH,startCount);
-		    if (Dummy == 0)
+
 			makeExitPath(++r,c,DUMMYPATH,startCount);
 		}
 		else{
 		  
-		    
+		    if (Dummy < percentage)
 		    makeExitPath(r,--c,DUMMYPATH,startCount);
 		}
 	    }
