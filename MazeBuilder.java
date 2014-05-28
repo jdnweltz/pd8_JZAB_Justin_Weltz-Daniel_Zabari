@@ -262,7 +262,7 @@ public class MazeBuilder{
 	}
     }
     public static void main(String[] args){
-	MazeBuilder JDawG=new MazeBuilder(100,100);
+	MazeBuilder JDawG=new MazeBuilder(100,50);
 	try {
 	    FileWriter f=new FileWriter("maze.txt");
 	    f.write(JDawG.toString());
