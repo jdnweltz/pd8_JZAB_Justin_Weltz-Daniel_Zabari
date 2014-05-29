@@ -1,14 +1,20 @@
 2014-05-25 (Both)
-Began developing Maze-creating algorithm.  Implemented seperate Dummy paths and Exit Paths.
-Maze is created thorugh set of recursive calls and always has a guaranteed exit.  Wrote transform method, which transforms symbols to whitespace.
+Began developing Maze-creating algorithm.  Implemented separate Dummy paths and Exit Paths.
+Maze is created thorough set of recursive calls and always has a guaranteed exit.  Wrote transform method, which transforms symbols to whitespace.
 Created 4 cases for 4 different corners.  Caused edges to reflect (change case) which we then determined breaks the code.
 We either get errors or pretty cool mazes.
 
 2014-05-27 (Justin)
-realized that the broken code was the result of a reflection at the very beginning and also changed the transformation if statemnet to accomadate the exit path. 
+realized that the broken code was the result of a reflection at the very beginning and also changed the transformation if statement to accommodate the exit path. The maze will now always be solvable. Added the startCount variable.
+
+2014-05-28 (Justin) 
+Added the dummy percentages and fixed the calls to dummy paths to accommodate this change. Tested out multiple percentages. Hard to get it right. Changes the size of the array in order to accommodate the reflection property.
 
 2014-05-28 (Zabari)
 Set to print only case 1, fixed some missing parens? fixed the column 0 row 0 problem, changed dummy path percentages, still not perfect.  Updated gitignore to ignore backup files and Maze.txt.
+
+2014-05-28 (Justin)
+played with expanding the amount of dummy paths created in order to make the maze more interesting. Played with percentages in order to make the dummy paths expand at random points.
 
 2014-05-29 (Zabari)
 Marked up Case 0 with clear-ish comments.  Attempted to overcome startCounter with clever algorithmic approach but did not succeed (yet).  Code should run fine.
