@@ -67,7 +67,7 @@ public class MazeBuilder{
 	int Switch=((int)(Math.random()*2));
 	double Dummy = Math.random();
 	int moveOver = (int)(Math.random()*3);
-	double percentage = .60;
+	double percentage = .9 ;
 	if (_caseNum== 0){
 	    if (Switch==0){
 		/*
@@ -78,27 +78,37 @@ public class MazeBuilder{
 		    // rE=r;
 		    //cE=c;
 		    makeExitPath(++r,c,EXITPATH, startCount);
-			makeExitPath(r,--c,DUMMYPATH,startCount);
+		    makeExitPath(r,--c,DUMMYPATH,startCount);
 		}
 		else {
 		    if (Dummy < percentage){
-		    makeExitPath(--r,c,DUMMYPATH,startCount);
+		     makeExitPath(--r,c,DUMMYPATH,startCount);
+		     makeExitPath(r,++c, DUMMYPATH,startCount);
+       
+		    }
+		    if (Dummy < percentage - .30){
+			makeExitPath(++r,c,DUMMYPATH, startCount);
+			makeExitPath(r,--c,DUMMYPATH, startCount);
 		    }
 		}
 	    }
-	    
 	    else{
 		if (_mazeArray[r][c] == EXITPATH){
 		    //rE=r;
 		    //cE=c;
 		    makeExitPath(r,++c,EXITPATH,startCount);
-		     makeExitPath(--r,c,DUMMYPATH,startCount);
+		    makeExitPath(--r,c,DUMMYPATH,startCount);
 			
 		}
 		else{
 	
 		    if (Dummy < percentage){
-			makeExitPath(--r,c,DUMMYPATH,startCount);
+			makeExitPath(r,--c,DUMMYPATH,startCount);
+			makeExitPath(++r, c, DUMMYPATH,startCount);
+		    }
+		    if(Dummy < percentage- 30){
+			makeExitPath(r, ++c, DUMMYPATH, startCount);
+			makeExitPath(--r,c, DUMMYPATH,startCount);
 		    }
 		    
 
@@ -119,6 +129,7 @@ public class MazeBuilder{
 		   if (Dummy < percentage)	
 		    makeExitPath(--r,c,DUMMYPATH,startCount);
 		   
+		   
 		}
 	    }
 	    else{
@@ -132,6 +143,7 @@ public class MazeBuilder{
 		else{
 		    if (Dummy < percentage)
 		    makeExitPath(r,++c,DUMMYPATH,startCount);
+		    makeExitPath(++r, c, DUMMYPATH, startCount); 
 		   
 		}
 	    }
