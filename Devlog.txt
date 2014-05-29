@@ -9,3 +9,6 @@ realized that the broken code was the result of a reflection at the very beginni
 
 2014-05-28 (Zabari)
 Set to print only case 1, fixed some missing parens? fixed the column 0 row 0 problem, changed dummy path percentages, still not perfect.  Updated gitignore to ignore backup files and Maze.txt.
+
+2014-05-29 (Zabari)
+Marked up Case 0 with clear-ish comments.  Attempted to overcome startCounter with clever algorithmic approach but did not succeed (yet).  Code should run fine.
