@@ -24,3 +24,6 @@ Major overhaul of code. Numbers instead of chars. More details if it works.
 
 2014-05-30 (Justin)
 tried to implement numbers part. But it didn't work so I will throughout a lot of the code.
+
+2014-06-02 (Daniel)
+Thought up an algorithm, began implementing.  Explanation stored in new folder. 
