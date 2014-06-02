@@ -21,3 +21,6 @@ Marked up Case 0 with clear-ish comments.  Attempted to overcome startCounter wi
 
 2014-05-29 (Justin)
 Major overhaul of code. Numbers instead of chars. More details if it works.
+
+2014-05-30 (Justin)
+tried to implement numbers part. But it didn't work so I will throughout a lot of the code.

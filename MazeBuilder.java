@@ -44,11 +44,12 @@ public class MazeBuilder{
 	System.out.println(path);
 	System.out.println(startCount);
     
-	if ( r >= _r||r<0 ||c<0||c>=_c){
+	/*if ( r >= _r||r<0 ||c<0||c>=_c){
 	    return;
 	
 	}
-	startCount = startCount + 1;
+	*/
+	/*startCount = startCount + 1;
 	if (startCount > 10){
 	    if (c==0||c==(_c-1)){
 		if (_caseNum==0)
@@ -59,20 +60,69 @@ public class MazeBuilder{
 		    _caseNum=3;
 		else if (_caseNum==3)
 		    _caseNum=2;
+	*/
 		/*
 		if (c==0)
 		    makeExitPath(r,++c,path,startCount);
 		if (c==_c-1)
 		    makeExitPath(r,--c,path,startCount);
 		//return;
-		*/
+		
 	    }
 	}
+		*/
 	//System.out.println(countUnlike(r,c,path));
-	if (countUnlike(r,c, path) > 1)
-	    return;
 	//	if (countNeighbors(r,c) >= 2)
 	// return;
+	int [] count = countAround(r,c);
+	int countEmpty = 0;
+	for (int i = 0; i < count.length; i++){
+	    cF += count[i];
+	}
+	boolean exitPathPlaced = true;
+	if (path == 0)
+	    exitPathPlaced = false;
+	if (cF == 4)
+	    return;
+	else{
+	    if (cF[0] == 1){
+		if (ePP){
+		    _mazeArray[r-1][c] = 1;
+		}
+		else{
+		    _mazeArray[r-1][c] = 0;
+		    ePP = true;
+		}
+	    }
+	    if (cF[1] == 1){
+		if (ePP){
+		    _mazeArray[r][c+1] = 1;
+		}
+		else{
+		    _mazeArray[r][c+1] = 0;
+		    ePP = true;
+		}
+	    }
+	       if (cF[2] == 1){
+		if (ePP){
+		    _mazeArray[r+1][c] = 1;
+		}
+		else{
+		    _mazeArray[r+1][c] = 0;
+		    ePP = true;
+		}
+	    }
+	       if (cF[3] == 1){
+		if (ePP){
+		    _mazeArray[r][c-1] = 1;
+		}
+		else{
+		    _mazeArray[r][c-1] = 0;
+		    ePP = true;
+		}
+	    }
+	       
+	       
 	_mazeArray[r][c]= path;
 	int Switch=((int)(Math.random()*2));
 	double Dummy = Math.random();
@@ -271,24 +321,32 @@ public class MazeBuilder{
     }
 	*/
 
-    private int countUnlike(int r, int c, int p){
-	int ret = 0;
+    private int [] countAround(int r, int c){
+	int [] ret = new int [4];
 	if (isValid(r+1,c)){
-	    if (_mazeArray[r+1][c] != p && _mazeArray[r+1][c] != -1)
-		ret++;
+	    if ( _mazeArray[r-1][c] != -1)
+		ret[0] = 1;
 	}
+	else
+	    ret[0] = 1;
 	if (isValid(r,c+1)){
-	    if (_mazeArray[r][c+1] != p && _mazeArray[r][c+1] != -1 )
-		ret++;
+	    if (_mazeArray[r][c+1] != -1 )
+		ret[1] = 1;
 	}
+	else
+	    ret[1] = 1;
 	if (isValid(r-1,c)){
-	    if (_mazeArray[r-1][c] != p && _mazeArray[r-1][c] != -1)
-	    ret++;
+	    if (_mazeArray[r+1][c] != -1)
+	    ret[2] = 1;
 	}
+	else
+	    ret[2] = 1;
 	if (isValid(r,c-1)){
-	    if( _mazeArray[r][c-1] != p && _mazeArray[r][c-1] != -1)
-	    ret++;
+	    if( _mazeArray[r][c-1] != -1)
+	    ret[3]= 1;
 	} 
+	else
+	    ret[3] = 1;
 	return ret;
     }
 
