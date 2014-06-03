@@ -21,28 +21,28 @@ public class MazeBuilder{
 	_caseNum=(int)(Math.random()*1);
 	_caseNumFinal=_caseNum;
 	if (_caseNumFinal==0){
-	    makeExitPath(0,0,0,0);
+	    makeExitPath(0,0,0);
 	    System.out.println("Case1");
 	}
 	if (_caseNumFinal==1){
-	    makeExitPath(0,w-1,0,0);
+	    makeExitPath(0,w-1,0);
 	    System.out.println("Case2");
 	}
 	if (_caseNumFinal==2){
-	    makeExitPath(h-1,w-1,0,0);
+	    makeExitPath(h-1,w-1,0);
 	    System.out.println("Case3");
 	}
 	if (_caseNumFinal==3){
-	    makeExitPath(h-1,0,0,0);
+	    makeExitPath(h-1,0,0);
 	    System.out.println("Case4");
 	}
 	//transform();
     }
-    private void makeExitPath(int r, int c, int path , int startCount){
+    private void makeExitPath(int r, int c, int path){
 	System.out.println(r);
 		System.out.println(c);
 	System.out.println(path);
-	System.out.println(startCount);
+
     
 	/*if ( r >= _r||r<0 ||c<0||c>=_c){
 	    return;
@@ -74,82 +74,85 @@ public class MazeBuilder{
 	//System.out.println(countUnlike(r,c,path));
 	//	if (countNeighbors(r,c) >= 2)
 	// return;
-	int [] count = countAround(r,c);
-	int countEmpty = 0;
+	ArrayList<Integer> randomSet= new ArrayList();
+	for (int i = 0; i  < 4; i++)
+	    randomSet.add(i);
 	for (int i = 0; i < count.length; i++){
 	    cF += count[i];
 	}
-	boolean exitPathPlaced = true;
-	if (path == 0)
-	    exitPathPlaced = false;
-	if (cF == 4)
-	    return;
-	else{
-	    if (cF[0] == 1){
-		if (ePP){
+	boolean exitPathPlaced = falsep;
+	for (int i = 0; i < 3; i++){
+	    int randomInt = (int) (Math.random() * randomSet.size());
+	
+	    int randomNum = randomSet.remove(randomInt);
+		
+	    if (count[0] == 0 && randomNum == 0){
+		if(exitPathPlaced){
+			    
 		    _mazeArray[r-1][c] = 1;
 		}
 		else{
 		    _mazeArray[r-1][c] = 0;
-		    ePP = true;
+		    exitPathPlaced = true;
 		}
 	    }
-	    if (cF[1] == 1){
-		if (ePP){
+	    if (count[1] == 0 && randomNum == 1){
+		if (exitPathPlaced){
 		    _mazeArray[r][c+1] = 1;
 		}
 		else{
 		    _mazeArray[r][c+1] = 0;
-		    ePP = true;
+		    exitPathPlaced = true;
 		}
 	    }
-	       if (cF[2] == 1){
-		if (ePP){
+	    if (count[2] == 0 && randomNum == 2){
+		if (exitPathPlaced){
 		    _mazeArray[r+1][c] = 1;
 		}
 		else{
 		    _mazeArray[r+1][c] = 0;
-		    ePP = true;
+		    exitPathPlaced = true;
 		}
 	    }
-	       if (cF[3] == 1){
-		if (ePP){
+	    if (count[3] == 0 && randomNum == 3){
+		if (exitPathPlaced){
 		    _mazeArray[r][c-1] = 1;
 		}
 		else{
 		    _mazeArray[r][c-1] = 0;
-		    ePP = true;
+		    exitPathPlaced = true;
 		}
 	    }
+	}
+      
 	       
-	       
-	_mazeArray[r][c]= path;
-	int Switch=((int)(Math.random()*2));
-	double Dummy = Math.random();
-	int moveOver = (int)(Math.random()*3);
-	double percentage = .9 ;
-	if (_caseNum== 0){
-	    //random Switch check
-	    if (Switch==0){
-		/*
-		for (int i = 0; i < moveOver; i ++)
-		    _mazeArray[++c][r] = path;
-		*/
-		//if I am part of the exit path
-		if (_mazeArray[r][c] == 0){
-		    // rE=r;
-		    //cE=c;
-		    //create one exit path, and one dummy path
-		    makeExitPath(++r,c,0, startCount);
-		    makeExitPath(r,--c,pathNum++,startCount);
-		}
-		//if I am not part of the exit path (dummy path)
-		else {
-		    //Dummy, a random number, less than a constant percentage
-		    if (Dummy < percentage){
-			//create two dummy paths
-		     makeExitPath(--r,c,pathNum,startCount);
-		     makeExitPath(r,++c, pathNum,startCount);
+	/*_mazeArray[r][c]= path;
+	  int Switch=((int)(Math.random()*2));
+	  double Dummy = Math.random();
+	  int moveOver = (int)(Math.random()*3);
+	  double percentage = .9 ;
+	  if (_caseNum== 0){
+	  //random Switch check
+	  if (Switch==0){
+	  /*
+	  for (int i = 0; i < moveOver; i ++)
+	  _mazeArray[++c][r] = path;
+	*/
+	//if I am part of the exit path
+	/*	if (_mazeArray[r][c] == 0){
+	// rE=r;
+	//cE=c;
+	//create one exit path, and one dummy path
+	makeExitPath(++r,c,0, startCount);
+	makeExitPath(r,--c,pathNum++,startCount);
+	}
+	//if I am not part of the exit path (dummy path)
+	else {
+	//Dummy, a random number, less than a constant percentage
+	if (Dummy < percentage){
+	//create two dummy paths
+	makeExitPath(--r,c,pathNum,startCount);
+	makeExitPath(r,++c, pathNum,startCount);
        
 		    }
 		    //same check as above, with reduced percentage, will create paths in all 4 directions.
@@ -216,6 +219,7 @@ public class MazeBuilder{
 		}
 	    }
 	}
+ 
 	else if (_caseNum== 2){
 	    //for (int i = 0; i < moveOver; i ++)
 	    //	    _mazeArray[--c][r] = path;
@@ -301,6 +305,7 @@ public class MazeBuilder{
 		makeExitPath(r,++c);
 	}
 	*/
+
 	
     }
     private boolean isValid(int r, int c){
@@ -323,7 +328,7 @@ public class MazeBuilder{
 
     private int [] countAround(int r, int c){
 	int [] ret = new int [4];
-	if (isValid(r+1,c)){
+	if (isValid(r-1,c)){
 	    if ( _mazeArray[r-1][c] != -1)
 		ret[0] = 1;
 	}
@@ -335,7 +340,7 @@ public class MazeBuilder{
 	}
 	else
 	    ret[1] = 1;
-	if (isValid(r-1,c)){
+	if (isValid(r+1,c)){
 	    if (_mazeArray[r+1][c] != -1)
 	    ret[2] = 1;
 	}
