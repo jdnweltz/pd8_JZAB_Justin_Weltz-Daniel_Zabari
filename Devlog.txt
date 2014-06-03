@@ -27,3 +27,6 @@ tried to implement numbers part. But it didn't work so I will throughout a lot o
 
 2014-06-02 (Daniel)
 Thought up an algorithm, began implementing.  Explanation stored in new folder. 
+
+2014-06-03 (Daniel)
+Minor changes.
