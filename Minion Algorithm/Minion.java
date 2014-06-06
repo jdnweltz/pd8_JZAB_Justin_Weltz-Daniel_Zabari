@@ -5,6 +5,7 @@ public class Minion{
     private int rD;
     private int cD;
     private float p;
+    private boolean planted=false;
     public Minion(int row, int col, Maze maze, int rDirection,int cDirection, float percentage){
 	r=row;
 	c=col;
@@ -21,5 +22,7 @@ public class Minion{
 
     private void forward(){
 	int d=(int)(Math.random()*4)+1;
-	
+	while (d>0){
+	    r+=rD;
+	    c+=cD;
     }

@@ -30,3 +30,6 @@ Thought up an algorithm, began implementing.  Explanation stored in new folder.
 
 2014-06-03 (Daniel)
 Minor changes.
+
+2014-06-06 (Daniel)
+Getting better idea of how algorithm will map out.
