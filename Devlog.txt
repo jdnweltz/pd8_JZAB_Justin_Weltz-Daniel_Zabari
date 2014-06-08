@@ -46,5 +46,8 @@ fixed the recursion issues
 2014-06–07 (Justin)
 algorithm seems to work, but hard to tell because of letter issues
 
+2014-06-08 (Justin)
+worked out a couple problems - created a case and an opening as well as an exit - now done with my algorithm
+
 
 
