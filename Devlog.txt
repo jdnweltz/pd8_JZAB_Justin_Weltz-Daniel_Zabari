@@ -23,13 +23,28 @@ Marked up Case 0 with clear-ish comments.  Attempted to overcome startCounter wi
 Major overhaul of code. Numbers instead of chars. More details if it works.
 
 2014-05-30 (Justin)
-tried to implement numbers part. But it didn't work so I will throughout a lot of the code.
+tried to implement numbers part. But it didn't work so I will throw out a lot of the code.
 
 2014-06-02 (Daniel)
 Thought up an algorithm, began implementing.  Explanation stored in new folder. 
 
+2014-06-02 (Justin)
+Started implementing a totally different algorithm- based on putting a path where it doesn’t touch another path.
+
 2014-06-03 (Daniel)
 Minor changes.
 
+2014-06-03 (Justin)
+Finished the algorithm but realize I was implementing the the recursion incorrectly.
+
 2014-06-06 (Daniel)
 Getting better idea of how algorithm will map out.
+
+2014-06-06 (Justin)
+fixed the recursion issues
+
+2014-06–07 (Justin)
+algorithm seems to work, but hard to tell because of letter issues
+
+
+
