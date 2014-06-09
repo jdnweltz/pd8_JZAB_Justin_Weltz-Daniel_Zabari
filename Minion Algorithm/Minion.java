@@ -5,14 +5,16 @@ public class Minion{
     private int rD;
     private int cD;
     private float p;
+    private char path;
     private boolean planted=false;
-    public Minion(int row, int col, Maze maze, int rDirection,int cDirection, float percentage){
+    public Minion(int row, int col, Maze maze, int rDirection,int cDirection, float percentage, char pa){
 	r=row;
 	c=col;
 	m=maze;
 	rD=rDirection;
 	cD=cDirection;
 	p=percentage;
+	path=pa;
     }
     private char val(){return m[r][c];}
     private void act{
