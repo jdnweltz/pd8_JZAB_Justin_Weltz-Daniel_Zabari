@@ -19,12 +19,6 @@ public class MazeBuilder{
 		_mazeArray[r][c] = -1;
 	    }
 	}
-	/*for (int r = 0;r<_r+2;r++){
-	    for (int c=0;c<_c+2;c++){
-		_maze[r][c] = "HE";
-	    }
-	}
-	*/
 	for (int r = 0;r<_r+2;r++){
 	    for (int c=0;c<_c+2;c++){
 		_case[r][c] = -1;
@@ -220,7 +214,7 @@ public class MazeBuilder{
 	for (int r = 0;r<_r+2;r++){
 	    for (int c=0;c<_c+2;c++){
 		if (_case[r][c] == -1)
-		    _maze[r][c] = "HE";
+		    _maze[r][c] = "[]";
 		else
 		    _maze[r][c] = "  ";
 			
@@ -232,11 +226,12 @@ public class MazeBuilder{
 	int w = Integer.parseInt(args[1]);
 	MazeBuilder JDawG=new MazeBuilder(h,w);
 	try {
-	    FileWriter f=new FileWriter("maze.txt");
+	    FileWriter f = new FileWriter("maze.txt");
 	    f.write(JDawG.toString());
+	    f.close();
 	}
 	catch(Exception e){}
-		System.out.println(JDawG);
+	System.out.println(JDawG);
     }
 }
 	    
