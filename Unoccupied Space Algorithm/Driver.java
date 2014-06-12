@@ -17,7 +17,6 @@ public class Driver{
 	    try {
 		FileWriter f = new FileWriter("maze.txt");
 		f.write(JDawG.toString());
-		f.write("\n" + (char)(178));
 	    f.close();
 	    }
 	    catch(Exception e){}
