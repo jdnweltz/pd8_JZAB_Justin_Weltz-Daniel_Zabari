@@ -49,5 +49,9 @@ algorithm seems to work, but hard to tell because of letter issues
 2014-06-08 (Justin)
 worked out a couple problems - created a case and an opening as well as an exit - now done with my algorithm
 
+2014-06-11 (Justin)
+made the character for the walls different- fixed the problem with the file - we weren’t closing it- and created the beginnings of the master Driver class.
+ 
+
 
 
