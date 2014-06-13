@@ -28,7 +28,7 @@ class MazeSolver {
 	//init 2D array to represent maze
 	// ...same dimensions as default terminal window
 	maze = new char[height][width];
-	w = witdth;
+	w = width;
 	h = height;
 
 	try {
@@ -46,12 +46,13 @@ class MazeSolver {
 		    maze[i][row] = line.charAt( i );
 		row++;
 	    }
+	}
 
 	    catch( Exception e ) { System.out.println( "Error reading file" ); }
 
 
 	    solved = false;
-	}
+    
     }//end constructor
 
 
@@ -134,7 +135,7 @@ public class Maze {
     public static void main( String[] args ) {
 
 try {
-MazeSolver ms = new MazeSolver( "maze.txt" );
+    MazeSolver ms = new MazeSolver( new File("maze.txt") );
 //clear screen
 System.out.println( "[2J" );
 

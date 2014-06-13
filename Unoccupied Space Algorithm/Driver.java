@@ -27,6 +27,23 @@ public class Driver{
 	    System.out.println(JDawG.toString());
 
 	    System.out.println("                           ");
+	    System.out.println("Whe you are ready to see the solution, type in 'sol'");  
+	    String sl = sc.next();
+	    //System.out.println("**************************");
+	    if (sl.equals("sol")){
+		System.out.println("**************************");
+		MazeSolver ms = new MazeSolver( "maze.txt",h,w );
+		ms.solve(1,3);
+		System.out.println(ms);
+		try {
+		    FileWriter f = new FileWriter("mazeSolution.txt");
+		    f.write(ms.toString());
+		    f.close();
+		}
+		 catch(Exception e){}
+	    }
+		
+	    
 	}
     }
 } 

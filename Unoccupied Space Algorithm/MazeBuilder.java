@@ -8,15 +8,21 @@ public class MazeBuilder{
     private String[][] _maze; 
     private int _path = 0;
     private int[][] _case;
+    private boolean _rowMajor = false;
     public MazeBuilder(int h, int w){
 	_r=h;
 	_c=w;
 	_mazeArray = new int[h][w];
-	_maze = new String[h+2][w+2];
+	_maze = new String[h+4][w+2];
 	_case = new int[h+2][w+2];
 	for (int r = 0;r<_r;r++){
 	    for (int c=0;c<_c;c++){
 		_mazeArray[r][c] = -1;
+	    }
+	}
+	for (int r = 0;r<_r+4;r++){
+	    for (int c=0;c<_c+2;c++){
+		_maze[r][c] = "  ";
 	    }
 	}
 	for (int r = 0;r<_r+2;r++){
@@ -158,7 +164,12 @@ public class MazeBuilder{
 	}
 	//System.out.println(maxR);
 	//System.out.println(maxC);
-	_case[maxR][maxC] = max;
+	_case[maxR][maxC] = -3;
+	
+	if (maxR == _r + 1){
+	    System.out.println("yes");
+	    _rowMajor = true;
+	}
 	  
     }  
 
@@ -194,7 +205,7 @@ public class MazeBuilder{
 	
     public String toString(){
 	String ret = "";
-	for (int r = 0;r<_r+2;r++){
+	for (int r = 0;r<_r+4;r++){
 	    for (int c=0;c<_c+2;c++){
 		ret+=_maze[r][c];
 	    }
@@ -211,12 +222,23 @@ public class MazeBuilder{
     }
 		 
     public void transform(){
+	String s = "START";
+	for (int i =0; i<5; i++)
+	    _maze[0][i] = s.substring(i,i+1);
 	for (int r = 0;r<_r+2;r++){
 	    for (int c=0;c<_c+2;c++){
 		if (_case[r][c] == -1)
-		    _maze[r][c] = "[]";
+		    _maze[r+1][c] = "[]";
+		else if (_case[r][c] ==-2)
+		    _maze[r+1][c] = "SS";
+		else if (_case[r][c] ==-3){
+		    if (_rowMajor)
+			_maze[r+2][c] = "END";	
+		    else
+			_maze[r+1][c] = "END";
+		}
 		else
-		    _maze[r][c] = "  ";
+		    _maze[r+1][c] = "  ";
 			
 	    }
 	}

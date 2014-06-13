@@ -51,6 +51,12 @@ worked out a couple problems - created a case and an opening as well as an exit 
 
 2014-06-11 (Justin)
 made the character for the walls different- fixed the problem with the file - we weren’t closing it- and created the beginnings of the master Driver class.
+
+2014-06-11 (Justin)
+Added the Maze Solver so I can display a solution
+
+2014-06-11 (Justin)
+Modified the maze solver to fit my maze - modified the Driver to print out a solution and create a text file with the solution in it.
  
 
 
