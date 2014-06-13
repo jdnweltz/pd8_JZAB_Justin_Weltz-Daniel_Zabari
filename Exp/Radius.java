@@ -1,11 +1,14 @@
+import java.util.*;
+import java.io.*;
 public class Radius{
-    char[][] maze;
+    String[][] maze;
     int _r;
     int _c;
     public Radius(int r, int c){
-	maze=new char[r][c];
-	r=_r;
-	c=_c;
+	maze=new String[r][c];
+	_r=r;
+	_c=c;
+	populate();
     }
     
     private void populate(){
@@ -20,6 +23,55 @@ public class Radius{
 	while (cMax>cStart){
 	    e1=(int)(Math.random()*p)+1;
 	    e2=(int)(Math.random()*p)+1;
+	    if (p==4){e1=e2;}
+	    ctr=1;
+	    for (int j=cStart;j<=cMax;j++){
+		maze[rStart][j]=String.valueOf(ctr);
+		if (ctr==e1||ctr==e2)
+		    maze[rStart][j]="  ";
+		ctr++;
+	    }
 	    for (int i=rStart;i<=rMax;i++){
-		for (int j=cStart;i<=cMax;j++)
+		maze[i][cMax]=String.valueOf(ctr);
+		if (ctr==e1||ctr==e2)
+		    maze[i][cMax]="  ";
+		ctr++;
+	    }
+	    for (int j=cMax;j>=cStart;j--){
+		maze[rMax][j]=String.valueOf(ctr);
+		if (ctr==e1||ctr==e2)
+		    maze[rMax][j]="  ";
+		ctr++;
+	    }
+	    for (int i=rMax;i>=rStart;i--){
+		maze[i][cStart]=String.valueOf(ctr);
+		if (ctr==e1||ctr==e2)
+		    maze[i][cStart]="  ";
+		ctr++;
+	    }
+	    rStart+=2;
+	    cStart+=2;
+	    cMax-=2;
+	    rMax-=2;
+	    p-=16;
+	}
+    }
+    public String toString(){
+	String str="";
+	for (int i=0;i<_r;i++){
+	    for (int j=0;j<_c;j++){
+		if (maze[i][j]==null||maze[i][j].equals("  ")) 
+		    str+="  ";
+		else
+		    str+="[]";
+	    }
+	    str+="\n";
+	}
+	return str;
+    }
+    public static void main(String[] args){
+	Radius Maze=new Radius(50, 50);
+	System.out.println(Maze);
+    }
+}
 		    

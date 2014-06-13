@@ -60,7 +60,7 @@ Modified the maze solver to fit my maze - modified the Driver to print out a sol
 
 2014-06-12 (Daniel)
 Maze solver no longer has dots.
- 
+Started new algorithm (radius algorithm).  Problems seem to be preventing exits from falling corners, and creating partitions between paths and Dummy paths, otherwise too easily solvable.
 
 
 
