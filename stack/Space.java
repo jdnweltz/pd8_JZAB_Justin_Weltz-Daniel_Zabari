@@ -18,7 +18,7 @@ public class Space{
 	Space[] ret=new Space[4];
 	for (int i=0; i<ret.length;i++){
 	    if (i==0){
-		if (!(_r==1)){
+		if (!(_r==0)){
 		    ret[i]=maze[_r-1][_c];
 		}
 	    }
@@ -43,8 +43,8 @@ public class Space{
     public boolean isVisited(){
 	return visited;
     }
-    private int rR(){return _r;}
-    private int rC(){return _c;}
+    public int rR(){return _r;}
+    public int rC(){return _c;}
     public int visit(){
 	if (isVisited()){
 	    setBack(true);
@@ -73,6 +73,7 @@ public class Space{
 		    size++;
 	    }
 	}
+	//System.out.println(size);
 	Space[] ret=new Space[size]; 
 	int j=0;
 	for (int i=0;i<n.length;i++){
@@ -92,7 +93,7 @@ public class Space{
 	}
 	int size = 0;
 	for (int i = 0; i < options.length; i++){
-	    if (!(options[i].returnUnvisitedNeighbors().length < 4))
+	    if (!(options[i].returnUnvisitedNeighbors().length > 2))
 		size++;
 	}
 	if (size == 0)
