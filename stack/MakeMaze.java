@@ -14,13 +14,25 @@ public class MakeMaze{
 		mazeArray[row][col] = new Space (r,c,mazeArray);
 	    }
 	}
+	/*for (int row = 0; row < r; row++){
+	    for ( int col =0; col < c; col++){
+		System.out.println(mazeArray[row][col].getMaze());
+	    }
+	}
+	*/
 	
+	move(mazeArray[0][0]);
     
     }
-    private void move(int r, int c){
-	
+    private void move(Space current){
+	current.setVisit(true);
+	Space next = current.Move();
+	move(next);
     }
-
+    public static void main (String[] args){
+	MakeMaze maze = new MakeMaze(20,20);
+	
+}
  
 	
 	    
