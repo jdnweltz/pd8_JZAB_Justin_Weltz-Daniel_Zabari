@@ -39,22 +39,45 @@ public class Space{
     public boolean isVisited(){
 	return visited;
     }
+    private int rR(){return _r;}
+    private int rC(){return _c;}
+    public int visit(){
+	if (isVisited()){
+	    setBack(true);
+	    return 1;
+	}
+	if (!isVisited()) {
+	    setVisit(true);
+	    return 0;
+	}
+	else
+	    return 2;
+    }
     public void setVisit(boolean b){
 	visited=t;
     }
     public void setBack(boolean b){
 	backed=b;
     }
-    public int returnUnvisitedNeighbor(){
+    public Space[] returnUnvisitedNeighbor(){
 	/* where 0 is the top one, 1 is the one to the right, and proceed clockwise*/
+	int size=0;
 	Space[] n=getNeighbors();
 	for (int i=0;i<n.length;i++){
 	    if (!n[i]==null){
 		if (!n[i].isVisited())
-		    return i;
+		    size++;
 	    }
 	}
-	return -1;
+	Space[] ret=new Space[size]; 
+	int j=0;
+	for (int i=0;i<n.length;i++){
+	    if (!n[i]==null){
+		if (!n[i].isVisited())
+		    ret[j++]=n[i];
+	    }
+	}
+	return ret;
     }
 	
     public boolean isBacked(){
