@@ -65,7 +65,7 @@ public class Space{
 	Space[] n=getNeighbors();
 	for (int i=0;i<n.length;i++){
 	    if (!n[i]==null){
-		if (!n[i].isVisited())
+		if (!n[i].isVisited()&&n[i].returnUnvisitedNeighbor().length()>=3)
 		    size++;
 	    }
 	}
@@ -73,7 +73,7 @@ public class Space{
 	int j=0;
 	for (int i=0;i<n.length;i++){
 	    if (!n[i]==null){
-		if (!n[i].isVisited())
+		if (!n[i].isVisited()&&n[i].returnUnvisitedNeighbor().length()>=3)
 		    ret[j++]=n[i];
 	    }
 	}
