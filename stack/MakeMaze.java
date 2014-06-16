@@ -19,12 +19,12 @@ public class MakeMaze{
 		mazeArray[row][col] = new Space (row,col,mazeArray);
 	    }
 	}
-	/*
+	
 	for (int row = 0; row < r+2; row++){
 	    for ( int col =0; col < c+2; col++){
 		maze[row][col] = "[]";
 	    }
-	    }*/
+	}
 	/*
 	for (int row = 0; row < r; row++){
 	    for ( int col =0; col < c; col++){
@@ -69,72 +69,79 @@ public class MakeMaze{
     }
     */
     private void move(Space current){
-	if (current==null)
+	/*if (current==null)
 	    return;
+	*/
 	s.push(current);
 	current.visit();
 	Space next=current.Move();
+	//System.out.println(next);
 	if (next==null){
 	    s.pop().visit();
 	    if (!s.empty()){
+		//System.out.println("I popped");
+		//System.out.println(current.rR());
+		//System.out.println(current.rC());
 		Space temp=s.pop();
 		temp.visit();
 		move(temp);
 	    }
-	    return;
+	    else
+		return;
+	    //return;
 	}
 	else{
 	    move(next);
-	    return;
+	    //return;
 	}
     }
 	
     public String toString(){
 	String ret="";
-	for (int col=0;col<_c;col++){
-	    ret+="-1";
-	}
-	ret+="-1-1\n";
 	for (int row = 0; row < _r; row++){
 	    for ( int col =0; col < _c; col++){
-		if (col==0){
-		    ret+="-1";
-		}
 		if (mazeArray[row][col].isVisited()){
-		    ret+="  ";
+		    maze[row+1][col+1] = "  ";
 		}
-		else{
-		    ret+="[]";	
-		}
-		if (col==_c-1){
-		    ret+="-1";
-		    }
 	    }
-	    ret+="\n";
 	}
-	    /*
-	for (int row = 0; row < _r; row++){
-	    for ( int col =0; col < _c; col++){
+	maze[0][1] = "SS";
+	maze[_r+1][_c] = "EE";
+	int l = _r;
+	int m = _c;
+	while (maze[l][m].equals("[]")){
+	    maze[l][m] = "  ";
+	    l-= 1;
+	}//to make sure the exit is accessible
+	   
+	for (int row = 0; row < _r+2; row++){
+	    for ( int col =0; col < _c+2; col++){
 		ret+= maze[row][col];
 	    }
 	    ret+= "\n";
-	    }*/
-	for (int col=0;col<_c;col++){
-	    ret+="-1";
 	}
-	ret+="-1-1";
 	return ret;
     }
 
 	
 	
     public static void main (String[] args){
-	MakeMaze maze = new MakeMaze(20,20);
-	System.out.println(maze);
+	MakeMaze JDawG= new MakeMaze(20,20);
+	try {
+	    FileWriter f = new FileWriter("maze.txt");
+	    f.write(JDawG.toString());
+	    f.close();
+	}
+	catch(Exception e){}
+	System.out.println(JDawG);
+	MazeSolverStack ms = new MazeSolverStack( "maze.txt",20,20 );
+	ms.solve(1,3);
+	System.out.println(ms);
+    }
 	
 }
  
 	
 	    
 	
-}
+

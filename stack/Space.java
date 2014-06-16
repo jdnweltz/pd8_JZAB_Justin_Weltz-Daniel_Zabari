@@ -1,3 +1,5 @@
+import java.io.*;
+    import java.util.*;
 public class Space{
     private boolean visited=false;
     private boolean backed=false;
@@ -96,6 +98,7 @@ public class Space{
 		}
 	    }
 	}
+	//System.out.println(Arrays.toString(ret));
 	return ret;
     }
     public Space Move(){
@@ -104,25 +107,34 @@ public class Space{
 	    return null;
 	}
 	int size = 0;
+	//System.out.println("options" + options.length);
 	for (int i = 0; i < options.length; i++){
 	    if ( options[i].numVisitedNeighbors()<=1)
 		size++;
 	}
 	if (size == 0)
 	    return null;
+	System.out.println("size" + size);
 	int j = 0;
 	Space [] goodOptions = new Space[size];
-	for (int i = 0; i < size; i++){
+	for (int i = 0; i < options.length; i++){
 	    if (options[i].numVisitedNeighbors()<=1 ){
+		System.out.println("hello");
 		goodOptions[j] = options[i];
 		j++;
 	    }
 	}
+	System.out.println(Arrays.toString(goodOptions));
 	int rand =(int)( Math.random()*size);
+	System.out.println("rand" + rand);
+	System.out.println(goodOptions[rand]);
 	return goodOptions[rand];
 	    
     }
-	    
+    
+    public String toString(){
+	return "" + _r + _c;
+    }
 	    
     public boolean isBacked(){
 	return backed;
