@@ -1,3 +1,4 @@
+/*This is what gets the code running.*/
 import java.io.*;
 import java.util.*;
 public class Driver{
@@ -16,6 +17,10 @@ public class Driver{
 	int h=70;
 	try{
 	     h = sc.nextInt();
+	     if (h<=6){
+		 System.out.println("too small.");
+		 System.exit(0);
+	     }
 	}catch (Exception e){
 	    System.out.println("Please enter an int.");
 	    System.exit(0);
@@ -24,7 +29,12 @@ public class Driver{
 	    int w = 40;
 	    System.out.println("now input the width of your maze:");
 	    try{
-		w = sc.nextInt();}
+		w = sc.nextInt();
+		if (w<=6){
+		    System.out.println("too small.");
+		    System.exit(0);
+		}
+	    }
 	    catch(Exception e){System.out.println("Please enter an int."); System.exit(0);}
 	    MazeBuilder JDawG = new MazeBuilder(h,w);
 	    try {
@@ -67,7 +77,7 @@ public class Driver{
 	    f.write(r.toENTString());
 	    f.close();
 	    FileWriter g=new FileWriter("maze.txt");
-	    g.write(g.toString());
+	    g.write(r.toString());
 	    g.close();
 	}
 	catch (Exception E){}
@@ -82,7 +92,7 @@ public class Driver{
 	    r=new Radius(h);
 	    try{
 		FileWriter f = new FileWriter("mazeENT.txt");
-		f.write(r.toString());
+		f.write(r.toENTString());
 		f.close();
 	    }
 	    catch (Exception E){}
@@ -107,7 +117,12 @@ public class Driver{
 	    int w = 40;
 	    System.out.println("now input the width of your maze:");
 	    try{
-		w = sc.nextInt();}
+		w = sc.nextInt();
+		if (w<=6){
+		    System.out.println("too small.");
+		    System.exit(0);
+		}
+	    }
 	    catch(Exception e){System.out.println("Please enter an int."); System.exit(0);}
 	    MakeMaze JDawG= new MakeMaze(h,w);
 	try {

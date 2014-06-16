@@ -1,4 +1,4 @@
-/*This algorithm works in a square shape.  It mathematically plants the exits, and ensures that they are not near each other.  Then it randomly chooses one of the four center tiles to serve as an exit, denoted by four exclamation points.*/
+/*This algorithm works in a square shape.  It mathematically plants the exits, and ensures that they are not near each other.  Then it randomly chooses one of the four center tiles to serve as an exit, denoted by two exclamation points.*/
 import java.util.*;
 import java.io.*;
 public class Radius{
