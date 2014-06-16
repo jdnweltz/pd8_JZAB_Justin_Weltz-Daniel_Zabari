@@ -4,29 +4,30 @@ import java.io.*;
 import java.util.*;
 
 
-class MazeSolver {
+public class MazeSolver2 {
 
     private String[][] maze;
     private int h, w; //height, width of maze
     private boolean solved;
 
     //initialize constants
-    final private String HERO = "@";
-    final private String PATH = "#";
-    final private String WALL1 = "[";
+    final private String HERO = "@@";
+    final private String PATH = "  ";
+    final private String WALL1 = "[]";
     final private String WALL2 = "]";
     final private String EXIT1 = "EE";
     final private String EXIT2 = "NN";
     final private String START1 = "A";
     final private String START2 = "R";
-    final private String START="!";
+    final private String START="!!";
     
-    final private String VISITED_PATH = ".";
+    final private String VISITED_PATH = "..";
 
 
-    public MazeSolver( String inputFile, int height, int width ) {
+    public MazeSolver2( String inputFile, int height, int width ) {
 	maze = new String[height][width];
 	h=height;
+	w=width;
 	
 	try {
 	    Scanner sc = new Scanner( new File(inputFile) );
@@ -35,23 +36,29 @@ class MazeSolver {
 
 	    //System.out.println(h);
 	    //System.out.println(w);
+	    String line = sc.nextLine();
 	    for (int row = 0; row < h; row++){
-		String line = sc.nextLine();
+		line=sc.nextLine();
 		String[] a=line.split("-1");
 		for( int i=0; i<a.length; i++ ){
 		    maze[row][i] = a[i];	
 		    //System.out.println(a[i]);
 		}
 	    }
+	    sc.close();
 	    //System.out.println(this);
-	}catch( Exception e ) { System.out.println( e); }
+	}catch( Exception e ) { 
+	    //System.out.println("here");
+	    System.out.println( e); 
+	    //System.out.println("and");
+	}
 
 	solved = false;
 	
     
     }//end constructor
 
-
+    public boolean solv(){return solved;}
     public String toString() {
 	//send ANSI code "ESC[0;0H" to place cursor in upper left
 	//String retStr = "[0;0H";
@@ -93,6 +100,7 @@ class MazeSolver {
 
 	//primary base case
 	if ( maze[x][y] .equals( EXIT1 )|| maze[x][y] .equals( EXIT2 )  ){
+	    //System.out.println("done");
 	    solved = true;
 	    for (int i=0; i<h;i++){
 		for(int j=0;j<w;j++){
@@ -101,7 +109,7 @@ class MazeSolver {
 		    }
 		}
 	    }
-	    System.out.println(this);
+	    //System.out.println(this);
 		try {
 		    FileWriter f = new FileWriter("mazeSolution.txt");
 		    f.write(toString());
@@ -113,7 +121,8 @@ class MazeSolver {
 	//other base cases
 	else if ( maze[x][y].equals(WALL1) || maze[x][y] .equals( WALL2) ||
 		  maze[x][y] .equals( HERO) ||
-		  maze[x][y] .equals( VISITED_PATH) ||  maze[x][y] .equals( START1 ) ||  maze[x][y] .equals( START )  ) {
+		  maze[x][y] .equals( VISITED_PATH) ||  maze[x][y] .equals( START1 ) ||  maze[x][y] .equals( START2)  ) {
+	    //System.out.println("blocked");
 	    return;
 	}
 	//otherwise, recursively solve maze from next pos over,
@@ -141,7 +150,7 @@ class MazeSolver {
 
 }//end class MazeSolver
 
-
+/*
 public class Maze {
 
     public static void main( String[] args ) {
@@ -153,15 +162,17 @@ public class Maze {
 
 	//display maze
 	System.out.println( ms );
-	Scanner sc = new Scanner("maze.txt");
+	Scanner sc = new Scanner(new File("maze.txt"));
 	ms.solve(sc.nextInt(),sc.nextInt());
 
 
 
 	}
 	catch( Exception e ) {
+	    //System.out.println("must be");
 	    System.out.println(e);
 	  }
     }
 
 }//end class Maze
+*/

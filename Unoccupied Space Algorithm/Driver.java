@@ -5,14 +5,27 @@ public class Driver{
 	Scanner sc = new Scanner(System.in);
 	System.out.println("Please pick the algorithm you wish to create your maze with:");
 	System.out.println("Justin's algorithm: Type j");  
-	System.out.println("Daniel's algorithm: Type d");  
+	System.out.println("Daniel's algorithm: Type d (optimal height, 70)");  
 	System.out.println("Stack algorithm: Type s");  
 	String s = sc.next();
+	if(!(s.equals("j")||s.equals("d")||s.equals("s"))){
+	    System.out.println("Enter what we say to! Try again.");
+	    System.exit(0);
+	}
 	System.out.println("now input the height of your maze:");
-	int h = sc.nextInt();
-	System.out.println("now input the width of your maze:");
-	int w = sc.nextInt();
+	int h=70;
+	try{
+	     h = sc.nextInt();
+	}catch (Exception e){
+	    System.out.println("Please enter an int.");
+	    System.exit(0);
+	}
 	if (s.equals("j")){
+	    int w=70;
+	    System.out.println("now input the width of your maze:");
+	    try{
+		w = sc.nextInt();}
+	    catch(Exception e){System.out.println("Please enter an int."); System.exit(0);}
 	    MazeBuilder JDawG = new MazeBuilder(h,w);
 	    try {
 		FileWriter f = new FileWriter("maze.txt");
@@ -41,10 +54,55 @@ public class Driver{
 		    f.close();
 		}
 		 catch(Exception e){}
-	    }
+	    }else{System.out.println("No solution for you.");}
 		
 	    
 	}
+	else if (s.equals("d")){
+	    System.out.println("If code runs successfully, your maze is in maze.txt and your solution is in mazeSolution.txt.");
+	    	try{
+	Radius r=new Radius(h);
+	try{
+	    FileWriter f = new FileWriter("mazeENT.txt");
+	    f.write(r.toENTString());
+	    f.close();
+	    FileWriter g=new FileWriter("maze.txt");
+	    g.write(g.toString());
+	    g.close();
+	}
+	catch (Exception E){}
+	
+	MazeSolver2 ms=new MazeSolver2("mazeENT.txt",h,h);
+
+	Scanner sa = new Scanner(new File("mazeENT.txt"));
+	ms.solve(sa.nextInt(),sa.nextInt());
+	boolean solved=ms.solv();
+	for(int i=0;i<1000;i++){
+	//while (!solved){
+	    r=new Radius(h);
+	    try{
+		FileWriter f = new FileWriter("mazeENT.txt");
+		f.write(r.toString());
+		f.close();
+	    }
+	    catch (Exception E){}
+
+	    sa = new Scanner(new File("mazeENT.txt"));
+	    ms.solve(sa.nextInt(),sa.nextInt());
+	    solved=ms.solv();
+	    if (solved){
+		System.out.println(r.toString());
+		break;
+	    }
+	}
+	if(!solved){
+	    System.out.println("An error occured, please try again.");
+	    }
+	}
+	catch(Exception e){}
+
+	
+	}
     }
-} 
+}
 	    
