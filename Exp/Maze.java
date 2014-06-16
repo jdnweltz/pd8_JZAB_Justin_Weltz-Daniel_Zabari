@@ -25,8 +25,8 @@ class MazeSolver {
 
 
     public MazeSolver( String inputFile, int height, int width ) {
-	maze = new String[height+10][width*2+10];
-	h = height+4;
+	maze = new String[height][width];
+	h=height;
 	
 	try {
 	    Scanner sc = new Scanner( new File(inputFile) );
@@ -35,15 +35,16 @@ class MazeSolver {
 
 	    //System.out.println(h);
 	    //System.out.println(w);
-	 
 	    for (int row = 0; row < h; row++){
 		String line = sc.nextLine();
 		String[] a=line.split("-1");
-		for( int i=0; i<a.length; i++ )
-		    maze[row][i] = a[i];	    }
-	}
-
-	catch( Exception e ) { System.out.println( e); }
+		for( int i=0; i<a.length; i++ ){
+		    maze[row][i] = a[i];	
+		    //System.out.println(a[i]);
+		}
+	    }
+	    //System.out.println(this);
+	}catch( Exception e ) { System.out.println( e); }
 
 	solved = false;
 	
