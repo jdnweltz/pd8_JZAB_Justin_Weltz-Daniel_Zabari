@@ -21,7 +21,7 @@ public class Driver{
 	    System.exit(0);
 	}
 	if (s.equals("j")){
-	    int w=70;
+	    int w = 40;
 	    System.out.println("now input the width of your maze:");
 	    try{
 		w = sc.nextInt();}
@@ -101,6 +101,38 @@ public class Driver{
 	}
 	catch(Exception e){}
 
+	
+	}
+	else {
+	    int w = 40;
+	    System.out.println("now input the width of your maze:");
+	    try{
+		w = sc.nextInt();}
+	    catch(Exception e){System.out.println("Please enter an int."); System.exit(0);}
+	    MakeMaze JDawG= new MakeMaze(h,w);
+	try {
+	    FileWriter f = new FileWriter("maze.txt");
+	    f.write(JDawG.toString());
+	    f.close();
+	}
+	catch(Exception e){}
+	System.out.println(JDawG);
+	System.out.println("When you are ready to see the solution, type in 'sol'");  
+	String sl = sc.next();
+	//System.out.println("**************************");
+	if (sl.equals("sol")){
+	    System.out.println("**************************");
+	    MazeSolverStack ms = new MazeSolverStack( "maze.txt",h,w );
+	    ms.solve(1,3);
+		System.out.println(ms);
+		try {
+		    FileWriter f = new FileWriter("mazeSolution.txt");
+		    f.write(ms.toString());
+		    f.close();
+		}
+		catch(Exception e){}
+	}else{System.out.println("No solution for you.");}
+	
 	
 	}
     }

@@ -3,8 +3,8 @@
 import java.io.*;
 import java.util.*;
 
-
-class MazeSolver {
+//This implements the mazeSolver class for the stack algorithm.
+public class MazeSolverStack {
 
     private String[][] maze;
     private int h, w; //height, width of maze
@@ -16,16 +16,16 @@ class MazeSolver {
     final private String WALL1 = "[";
     final private String WALL2 = "]";
     final private String EXIT1 = "E";
-     final private String EXIT2 = "N";
-    final private String START1 = "A";
+    final private String EXIT2 = "N";
+    final private String START1 = "S";
     final private String START2 = "R";
     
     final private String VISITED_PATH = ".";
 
 
-    public MazeSolver( String inputFile, int height, int width ) {
-	maze = new String[height+10][width*2+10];
-	h = height+4;
+    public MazeSolverStack( String inputFile, int height, int width ) {
+	maze = new String[height+5][width*2+5];
+	h = height+2;
 	
 	try {
 	    Scanner sc = new Scanner( new File(inputFile) );
@@ -92,7 +92,13 @@ class MazeSolver {
 	//primary base case
 	if ( maze[x][y] .equals( EXIT1 )|| maze[x][y] .equals( EXIT2 )  ){
 	    solved = true;
-	    for (int 
+	    for (int i=0; i<h;i++){
+		for(int j=0;j<w;j++){
+		    if (maze[i][j]=="."){
+			maze[i][j]=" ";
+		    }
+		}
+	    }
 	    System.out.println(this);
 		try {
 		    FileWriter f = new FileWriter("mazeSolution.txt");
@@ -134,7 +140,7 @@ class MazeSolver {
 }//end class MazeSolver
 
 
-public class Maze {
+/*public class Maze {
 
     public static void main( String[] args ) {
 
@@ -155,3 +161,4 @@ public class Maze {
     }
 
 }//end class Maze
+*/

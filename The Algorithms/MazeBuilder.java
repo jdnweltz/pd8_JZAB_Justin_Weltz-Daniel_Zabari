@@ -30,12 +30,13 @@ public class MazeBuilder{
 		_case[r][c] = -1;
 	    }
 	}
-	makeExitPath(0,0,0);
-	placeInCase();
-	openingAndEnding();
-	transform();
+	makeExitPath(0,0,0);//this will start the recursion and keep track of the path number - the path number will be used to establish the most optimal end.
+	placeInCase();//places the mazw in a case
+	openingAndEnding();//creates an opening and then establishes a close in th most optimal spot.
+	transform(); //transforms the maze into its final product
     }
     private void makeExitPath(int r, int c, int path){
+	//creates pathways based on the principle that each path element expands in every possible direction it can. - "can" is based on whether the place it attempts to expand to has any neighbors itself - if it does then the path does not expand that way (prevents paths from running into eachother - however, if it doesn't than the path expands in that direction as well as every other direction.
 	_path = path;
 
 	int []count = countAround(r,c);
@@ -60,7 +61,6 @@ public class MazeBuilder{
 	    int randomInt = (int) (Math.random() * randomSet.size());
 	
 	    int randomNum = randomSet.remove(randomInt);
-	    //System.out.println(randomSet.size());
 		
 	    if (count[0] == 0 && randomNum == 0){
 
@@ -132,14 +132,6 @@ public class MazeBuilder{
 	int max = 0;
 	int maxR = 0;
 	int maxC = 0;
-	/*for (int c = 1; c < _c+1; c++){
-	    if (_case[1][c] > max){
-		max = _case[1][c];
-		maxR = 0;
-		maxC = c;
-	    }
-	}
-	*/
 	for (int c = 1; c < _c+1; c++){
 	    if (_case[_r-2][c] > max){
 		max = _case[_r][c];
@@ -147,14 +139,7 @@ public class MazeBuilder{
 		maxC = c;
 	    }
 	}
-	/*for (int r = 1; r < _r+1; r++){
-	    if (_case[r][1] > max){
-		max = _case[r][1];
-		maxR = r;
-		maxC = 0;
-	    }
-	}
-	*/
+
 	for (int r = 1; r < _r+1; r++){
 	    if (_case[r][_c-1] > max){
 		max = _case[r][_c];
@@ -162,8 +147,7 @@ public class MazeBuilder{
 		maxC = _c+1;
 	    }
 	}
-	//System.out.println(maxR);
-	//System.out.println(maxC);
+
 	_case[maxR][maxC] = -3;
 	
 	if (maxR == _r + 1){

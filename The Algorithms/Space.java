@@ -6,6 +6,8 @@ public class Space{
     private int _r;
     private int _c;
     private Space[][] maze;
+    //this element acts as a piece of the array that can be stacked and marked for the toString method.
+    //its returnUnvisitedNeighbor method performs the same kind of check as the Unoccupied Algorithm neighbor check does - the main difference lies in the fact that the stack method expands in one direction at a time - then pops of and expands in a different direction.
     
     public Space(int r,int c, Space[][] maze1){
 	_r=r;
@@ -87,7 +89,7 @@ public class Space{
 		    size++;
 	    }
 	}
-	//System.out.println(size);
+
 	Space[] ret=new Space[size]; 
 	int j=0;
 	for (int i=0;i<n.length;i++){
@@ -98,7 +100,6 @@ public class Space{
 		}
 	    }
 	}
-	//System.out.println(Arrays.toString(ret));
 	return ret;
     }
     public Space Move(){
@@ -107,27 +108,21 @@ public class Space{
 	    return null;
 	}
 	int size = 0;
-	//System.out.println("options" + options.length);
 	for (int i = 0; i < options.length; i++){
 	    if ( options[i].numVisitedNeighbors()<=1)
 		size++;
 	}
 	if (size == 0)
 	    return null;
-	System.out.println("size" + size);
 	int j = 0;
 	Space [] goodOptions = new Space[size];
 	for (int i = 0; i < options.length; i++){
 	    if (options[i].numVisitedNeighbors()<=1 ){
-		System.out.println("hello");
 		goodOptions[j] = options[i];
 		j++;
 	    }
 	}
-	System.out.println(Arrays.toString(goodOptions));
 	int rand =(int)( Math.random()*size);
-	System.out.println("rand" + rand);
-	System.out.println(goodOptions[rand]);
 	return goodOptions[rand];
 	    
     }

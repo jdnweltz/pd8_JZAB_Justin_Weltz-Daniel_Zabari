@@ -7,6 +7,7 @@ public class MakeMaze{
     private Stack<Space> s;
     private Space[][]mazeArray;
     private String[][] _case;
+    //Most of the meet of this algorithm exists in the Space class, however this class does illustrate some interesting features. The Stack in this class stacks the elements as they create a path and - once this path is bloacked off - the stack allows the path to backtrack and run in a different direction.
     public MakeMaze(int r, int c){
 	_r = r;
 	_c = c;
@@ -25,74 +26,34 @@ public class MakeMaze{
 		maze[row][col] = "[]";
 	    }
 	}
-	/*
-	for (int row = 0; row < r; row++){
-	    for ( int col =0; col < c; col++){
-		System.out.println(mazeArray[row][col].rR());
-		}
-	}*/
+
     
-	
+     
 	
 	move(mazeArray[0][0]);
 	
     }
-    /*
+ 
     private void move(Space current){
-	//System.out.println(toString());
-	System.out.println(current.rR()+","+current.rC());
-	if (current==null){return;}
-	    
-	current.visit();
-	Space next = current.Move();
-	System.out.println(next);
-	if (next == null){
-	    if (!s.empty()){
-		Space temp=s.pop();
-		temp.visit();
-		move(temp);
-	    }
-	    else{return;}
-	}
-	
-	else{
-	    s.push(current);
-	    move(next);
-	    if (!s.empty()){
-		Space temp2=s.pop();
-		temp2.visit();
-	    }
-	    return;
-	}    
-	if (s.empty())
-	    return;
-    }
-    */
-    private void move(Space current){
-	/*if (current==null)
-	    return;
-	*/
+
 	s.push(current);
 	current.visit();
 	Space next=current.Move();
-	//System.out.println(next);
+
 	if (next==null){
 	    s.pop().visit();
 	    if (!s.empty()){
-		//System.out.println("I popped");
-		//System.out.println(current.rR());
-		//System.out.println(current.rC());
+
 		Space temp=s.pop();
 		temp.visit();
 		move(temp);
 	    }
 	    else
 		return;
-	    //return;
+
 	}
 	else{
 	    move(next);
-	    //return;
 	}
     }
 	

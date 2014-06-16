@@ -3,9 +3,9 @@
 import java.io.*;
 import java.util.*;
 
-
-public class MazeSolver {
-
+//This implements the MazeSolver class for the Radius algorithm.
+public class MazeSolver2 {
+    
     private String[][] maze;
     private int h, w; //height, width of maze
     private boolean solved;
@@ -24,7 +24,7 @@ public class MazeSolver {
     final private String VISITED_PATH = "..";
 
 
-    public MazeSolver( String inputFile, int height, int width ) {
+    public MazeSolver2( String inputFile, int height, int width ) {
 	maze = new String[height][width];
 	h=height;
 	w=width;
