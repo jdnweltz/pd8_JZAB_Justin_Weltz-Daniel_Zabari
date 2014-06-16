@@ -27,7 +27,7 @@ public class Driver{
 	    System.out.println(JDawG.toString());
 
 	    System.out.println("                           ");
-	    System.out.println("When you are ready to see the solution, type in 'sol'");  
+	    System.out.println("Whe you are ready to see the solution, type in 'sol'");  
 	    String sl = sc.next();
 	    //System.out.println("**************************");
 	    if (sl.equals("sol")){

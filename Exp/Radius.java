@@ -12,6 +12,8 @@ public class Radius{
     int pER2;
     int pEC1;
     int pEC2;
+    int fR=0;
+    int fC=0;
     public Radius(int r){
 	maze=new String[r][r];
 	_r=r;
@@ -183,8 +185,11 @@ public class Radius{
 	    maze[rStart][cStart]=null;}
 	     */
 	    if (level>1){
-		if (p==4)
+		if (p==4){
 		    maze[eR1][eC1]="!";
+		    fR=eR1;
+		    fC=eC1;
+		}
 		if (p>4){
 		    maze[eR1][eC1]=null;
 		    maze[eR2][eC2]=null;
@@ -192,8 +197,8 @@ public class Radius{
 		}
 	    }
 	    if (level==1){
-		maze[eR1][eC1]=null;
-		maze[eR2][eC2]=null;
+		maze[eR1][eC1]="E";
+		maze[eR2][eC2]="N";
 	    }
 	    /*
 	    if (p>4){
@@ -225,7 +230,7 @@ public class Radius{
 		System.out.println(maze[_r/2-2][_c/2]);
 		}*/
 
-	    System.out.println(eR1+","+eC1+"\n"+eR2+","+eC2);
+	    //stem.out.println(eR1+","+eC1+"\n"+eR2+","+eC2);
 	    pER1=eR1;
 	    pER2=eR2;
 	    pEC1=eC1;
@@ -293,14 +298,19 @@ public class Radius{
 	}
     public String toString(){
 	String str="";
+	str+=fR+" "+fC+"\n";
 	for (int i=0;i<_r;i++){
 	    for (int j=0;j<_c;j++){
 		if (maze[i][j]==null||maze[i][j].equals("  ")) 
-		    str+="  ";
+		    str+="  -1";
 		else if (maze[i][j].equals("!"))
-		    str+="!!";
+		    str+="!!-1";
+		else if(maze[i][j].equals("E"))
+		    str+="EE-1";
+		else if (maze[i][j].equals("N"))
+		    str+="NN-1";
 		else
-		    str+="[]";
+		    str+="[]-1";
 				   
 		    //str+=maze[i][j]+" ";
 	    }
@@ -311,6 +321,12 @@ public class Radius{
     public static void main(String[] args){
 	Radius Maze=new Radius(50);
 	System.out.println(Maze);
+	try{
+	    FileWriter f = new FileWriter("maze.txt");
+	    f.write(Maze.toString());
+	    f.close();
+	}
+	catch (Exception E){}
     }
 }
 		    

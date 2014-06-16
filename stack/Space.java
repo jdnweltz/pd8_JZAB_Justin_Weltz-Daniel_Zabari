@@ -63,6 +63,18 @@ public class Space{
     public void setBack(boolean b){
 	backed=b;
     }
+    public int numVisitedNeighbors(){
+	Space[] a=getNeighbors();
+	int ret=0;
+	for (int i=0;i<a.length;i++){
+	    if (a[i]!=null){
+		if (a[i].isVisited())
+		    ret++;
+	    }
+	}
+	return ret;
+    }
+			   
     public Space[] returnUnvisitedNeighbors(){
 	/* where 0 is the top one, 1 is the one to the right, and proceed clockwise*/
 	int size=0;
@@ -87,13 +99,13 @@ public class Space{
 	return ret;
     }
     public Space Move(){
-	Space [] options = returnUnvisitedNeighbors();
+	Space[] options = returnUnvisitedNeighbors();
 	if ( options.length == 0){
 	    return null;
 	}
 	int size = 0;
 	for (int i = 0; i < options.length; i++){
-	    if (!(options[i].returnUnvisitedNeighbors().length > 2))
+	    if ( options[i].numVisitedNeighbors()<=1)
 		size++;
 	}
 	if (size == 0)
@@ -101,7 +113,7 @@ public class Space{
 	int j = 0;
 	Space [] goodOptions = new Space[size];
 	for (int i = 0; i < size; i++){
-	    if (!(options[i].returnUnvisitedNeighbors().length < 4 )){
+	    if (options[i].numVisitedNeighbors()<=1 ){
 		goodOptions[j] = options[i];
 		j++;
 	    }
