@@ -3,7 +3,16 @@ pd8_JZAB_Justin_Weltz-Daniel_Zabari
 This final project implements three different algorithms for generating mazes. 
 
 In order to use this program, compile and run the driver. 
-<code> git clone https://github.com/jdnweltz/pd8_JZAB_Justin_Weltz-Daniel_Zabari.git <code>
+
+From terminal:
+
+
+<code> git clone https://github.com/jdnweltz/pd8_JZAB_Justin_Weltz-Daniel_Zabari.git 
+cd "The Algorithms"
+javac Driver.java
+java Driver
+</code>
+
 This will give you three different options:
 
 Justin’s Algorithm: (which works by expanding in every direction possible - possible meaning not off the board or into another path) 
