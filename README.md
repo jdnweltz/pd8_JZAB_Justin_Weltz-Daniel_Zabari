@@ -8,8 +8,11 @@ From terminal:
 
 
 <code> git clone https://github.com/jdnweltz/pd8_JZAB_Justin_Weltz-Daniel_Zabari.git 
+
 cd "The Algorithms"
+
 javac Driver.java
+
 java Driver
 </code>
 
